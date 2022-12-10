@@ -8,3 +8,5 @@ Process_Map - Takes an event log and generate a process mapfor the cancer in que
 Transition_Tables - Takes and event log and generates a tranistion table for the given cancer <br />
 Traces - Takes an event log and retrurns a table of traces and their frequency <br />
 check_height - A function that checks of inconsistant heights along a pathway <br />
+
+The code for the above functions along with some example code using them are contained in the process_mining_functions.py file
