@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
-#pip install pm4py
-
-
-# In[2]:
-
-
 import pandas as pd
 import pm4py as pm4py
 from datetime import datetime
@@ -21,10 +12,6 @@ from statistics import median
 from pm4py.algo.filtering.log.variants import variants_filter
 from pm4py.statistics.traces.log import case_statistics
 import numpy as np
-
-
-# In[3]:
-
 
 def load_events(Cancer_code_icd10):
     ###build an event file from cancer sim
@@ -162,10 +149,6 @@ def load_events(Cancer_code_icd10):
     #display(cancer_events)
     cancer_events.to_csv('C:/Users/Ali/Documents/process mining/events.csv')
 
-
-# In[4]:
-
-
 #### A function for plotting process maps
 def process_map():
     ##process map
@@ -217,11 +200,6 @@ def process_map():
     filtered = pm4py.filter_start_activities(event_log, {'Decision_to_treat'})
     print(filtered)
        
-
-
-# In[5]:
-
-
 ### a function for density plots
 def expl_plots(dates_from,dates_to,title_text):
     ###explore density distributions between dates
@@ -255,12 +233,7 @@ def expl_plots(dates_from,dates_to,title_text):
     print("lenght of",title_text,len(for_plot))
     res = [int(item) for item in for_plot]
     print("Average for", title_text, sum(res)/len(res))
-    
-
-
-# In[6]:
-
-
+ 
 def transition_table(title):
     ########### A function for generating the transition tables from the event log
 
@@ -343,10 +316,6 @@ def transition_table(title):
     display(s)
     print("Total Transitions:", heat_map.sum())
 
-
-# In[7]:
-
-
 def traces(label):
     ###some code that actually generates traces
      ##### get most common traces by length
@@ -388,10 +357,6 @@ def traces(label):
         #plt.show
     pd.DataFrame(output_for_csv).to_csv('C:/Users/Ali/Documents/process mining/traces_'+label+'.csv')
     print(f"All Traces have been printed to csv")
-
-
-# In[8]:
-
 
 ####Check Heights script
 # This is a script that loads the "sim_sact_regimen" table and identifies number of pathways where height has shrun over a pathway over a certain threshold (set to 5cm) 
@@ -460,10 +425,6 @@ for a in dupids:
     
 print("out of ", len(dupids), "pathways there are ", shrink_count, "pathways with a shrink. This is", (shrink_count/len(dupids))*100,"%" )
 
-
-# In[9]:
-
-
 ## function for identifying deaths out out of place in a pathway
 def pathway_stats(label):
     pathways = pd.read_csv('C:/Users/Ali/Documents/process mining/traces_'+label+'.csv', sep=',')
@@ -491,16 +452,11 @@ def pathway_stats(label):
     #display(pathways)
 
 
-# In[12]:
-
-
-########################## Execution block (sample analysis code using functions defined above]
+########################## Below is some sample analysis using the defined functions above ###
 ## the below generates pathway stats for deaths out of place for C50. Can be changed for other top 5 tumour types C44,D09,C34,C61
 load_events('D06')
 transition_table('D06')
 
-
-# In[ ]:
 
 
 ######################################top 5 cancer analyis
